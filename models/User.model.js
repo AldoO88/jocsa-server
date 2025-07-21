@@ -12,8 +12,7 @@ const userSchema = new Schema({
     },
     password: {
         type: String,
-        required: [true, 'La contraseña es obligatoria.'],
-        select: false, // No se envía en las consultas por defecto
+        required: [true, 'The password field is required.'],
     },
 
     // --- Información de Contacto (Opcional) ---
