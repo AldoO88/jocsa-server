@@ -7,7 +7,7 @@ const signupController = async (req, res, next) => {
         const { firstName, lastName, email, phone, password, confirmPassword } = req.body;
 
         console.log(firstName, lastName, email, phone, password, confirmPassword);
-        
+
         if( email === '' || password === '' || firstName === '' || lastName === '' || confirmPassword === '' || phone === ''){
             res.status(400).json({ message: "The fields name, last name, profile, email, password are required" })
             return
@@ -79,7 +79,7 @@ const loginController = async (req, res, next) =>{
         if(isPasswordCorrect) {
 
             const authToken = jwt.sign(
-                { _id: foundUser._id, firtName: foundUser.firstName, lastName: foundUser.lastName, phone: foundUser.phone, email: foundUser.email}, // payload
+                { userId: foundUser._id, firstName: foundUser.firstName, lastName: foundUser.lastName, phone: foundUser.phone, email: foundUser.email}, // payload
                 process.env.SECRET_KEY,                       // secret key
                 { algorithm: 'HS256', expiresIn: '1h' }       // header
             )
